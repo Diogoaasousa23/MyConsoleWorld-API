@@ -1,0 +1,21 @@
+{
+    "games": [
+      {
+        "id": 1,
+        "name": "The Last of Us Part II",
+        "date": "2020-06-19",
+        "console": "PlayStation 4",
+        "state": "Completed",
+        "rating": 10
+      },
+      {
+        "id": 2,
+        "name": "God of War",
+        "date": "2018-04-20",
+        "console": "PlayStation 4",
+        "state": "Completed",
+        "rating": 9
+      }
+    ]
+  }
+  
