@@ -1,7 +1,7 @@
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
-//Testa a ligação
+// Testa a ligação
 exports.testConnection = async (req, res) => {
   try {
     await prisma.$connect();
@@ -13,90 +13,94 @@ exports.testConnection = async (req, res) => {
   }
 };
 
-//Devolve todos os carros
+// Devolve todos os jogos
 exports.getAll = async (req, res) => {
   try {
-    //le toda a tabela
-    const response = await prisma.Carros.findMany();
+    // Le toda a tabela
+    const response = await prisma.Games.findMany();
     res.status(200).json(response);
   } catch (error) {
     res.status(500).json({ msg: error.message });
   }
 };
 
-//Devolve um carro indicado por um id
+// Devolve um jogo indicado por um id
 exports.getById = async (req, res) => {
-  //apanha o id enviado
+  // Apanha o id enviado
   const id = req.params.id * 1;
   try {
-    //procura o carro com o id
-    const response = await prisma.Carros.findUnique({
+    // Procura o jogo com o id
+    const response = await prisma.Games.findUnique({
       where: {
         id: id,
       },
     });
-    //devolve o carro
+    // Devolve o jogo
     res.status(200).json(response);
   } catch (error) {
     res.status(404).json({ msg: error.message });
   }
 };
 
-//criar um carro
+// Criar um jogo
 exports.create = async (req, res) => {
-  //apanhar os dados enviados
-  const { Marca, Detalhes, Foto } = req.body;
+  // Apanhar os dados enviados
+  const { name, date, console, state, rating } = req.body;
   try {
-    //criar um novo carro
-    const carro = await prisma.Carros.create({
+    // Criar um novo jogo
+    const game = await prisma.Games.create({
       data: {
-        Marca: Marca,
-        Detalhes: Detalhes,
-        Foto: Foto,
+        name: name,
+        date: date,
+        console: console,
+        state: state,
+        rating: rating,
       },
     });
-    //devolve o carro criado
-    res.status(201).json(carro);
+    // Devolve o jogo criado
+    res.status(201).json(game);
   } catch (error) {
     res.status(400).json({ msg: error.message });
   }
 };
 
-//Atualizar um carro
+// Atualizar um jogo
 exports.update = async (req, res) => {
-  const { id, Marca, Detalhes, Foto } = req.body;
+  const { id, name, date, console, state, rating } = req.body;
 
   try {
-    //procurar o carro com id e atualizar os dados
-    const carro = await prisma.Carros.update({
+    // Procurar o jogo com id e atualizar os dados
+    const game = await prisma.Games.update({
       where: {
         id: id * 1,
       },
       data: {
-        Marca: Marca,
-        Detalhes: Detalhes,
-        Foto: Foto,
+        name: name,
+        date: date,
+        console: console,
+        state: state,
+        rating: rating,
       },
     });
-    //devolve o carro atualizado
-    res.status(200).json(carro);
+    // Devolve o jogo atualizado
+    res.status(200).json(game);
   } catch (error) {
     res.status(400).json({ msg: error.message });
   }
 };
 
-//apagar o carro com id passado
+// Apagar o jogo com id passado
 exports.delete = async (req, res) => {
-  //le o id do carro
+  // Le o id do jogo
   const id = req.params.id;
   try {
-    //delete student
-    await prisma.Carros.delete({
+    // Apagar o jogo
+    await prisma.Games.delete({
       where: {
         id: id * 1,
       },
     });
-    //just return ok
+    // Apenas retorna ok
     res.status(200).send("ok");
   } catch (error) {
     res.status(400).json({ msg: error.message });

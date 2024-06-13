@@ -1,7 +1,7 @@
 const router = require('express').Router();
-const carrosRouter = require('./carros');
+const carrosRouter = require('./games');
 
-router.use('/carros', carrosRouter);
+router.use('/games', carrosRouter);
 
 
 module.exports = router;

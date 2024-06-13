@@ -162,6 +162,136 @@
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-  <script src="Scripts/Sony.js"></script>
+
+  <script>
+    const listarCarros = async () => {
+        let strHtml = ``
+        //alert("aaaa")
+        const response = await fetch('http://localhost:4242/api/carros')
+        const lv = await response.json()
+        for (const artigo of lv) {
+            strHtml += `
+                <tr>
+                    <td>${artigo.id}</td>
+                    <td>${artigo.Marca}</td>
+                    <td>${artigo.Detalhes}</td>
+                    <td>${artigo.Foto}</td>
+                    <td>
+                      <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#upModal" onclick="preparaEditCarro(${artigo.id})"><i class="fa fa-pencil"></i> Editar</button>
+                        <button type='button' class='btn btn-danger' onclick="apagaCarro(${artigo.id})"><i class="fa fa-trash"></i> Apagar</button>
+                    </td>
+                </tr>
+                    `
+        }
+        document.getElementById("cardCarros").innerHTML = strHtml;
+    }
+  listarCarros();
+
+const novoCarro= async () => {
+        var dados = {
+      id: document.getElementById("mId").value,
+      Marca: document.getElementById("mMarca").value,
+      Detalhes: document.getElementById("mDetalhes").value,
+      Foto: document.getElementById("mFoto").value,
+    };
+        //alert(dados.Marca) //alert(dados.Detalhes) //alert(dados.Foto)
+        fetch('http://localhost:4242/api/carros/create', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(dados)
+        })
+        .then(response => {
+            // Verifica se a resposta foi bem sucedida
+            if (!response.ok) {
+                throw new Error('Erro ao obter os dados');
+            }
+            // Converte a resposta para JSON
+            return response.json();
+        })
+        .then(data => {
+             // Faz algo com os dados 
+//console.log(data);
+            resposta="O carro com a marca: "+dados.Marca+" foi adicionado com sucesso!"
+            alert(resposta)
+            listarCarros();
+
+        })
+        .catch(error => {
+            // Captura qualquer erro de rede ou tratamento de erro
+            console.error('Houve um erro:', error);
+        });
+    }
+
+    const apagaCarro = async (id) => {
+    fetch("http://localhost:4242/api/carros/delete/" + id, {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+    })
+      .then((response) => {
+        // Verifica se a resposta foi bem sucedida
+        if (!response.ok) {
+          throw new Error("Erro ao obter os dados");
+        }
+        return response;
+      })
+      .then((data) => {
+        // Faz algo com os dados
+        //console.log(data);
+        resposta = "O carro foi apagado com sucesso!";
+        alert(resposta);
+        listarCarros();
+      })
+      .catch((error) => {
+        // Captura qualquer erro de rede ou tratamento de erro
+        console.error("Houve um erro:", error);
+      });
+  };
+
+  const preparaEditCarro = async (id) => {
+        //alert("aaaa")
+        const response = await fetch('http://localhost:4242/api/carros/'+id)
+        const artigo = await response.json()
+       
+        document.getElementById("muId").value = artigo[0].id;
+        document.getElementById("muMarca").value = artigo[0].Marca;
+        document.getElementById("muDetalhes").value = artigo[0].Detalhes;
+        document.getElementById("muFoto").value = artigo[0].Foto;
+    }
+
+    const atualizaCarro = async () => {
+    var dados = {
+      id: document.getElementById("muId").value,
+      Marca: document.getElementById("muMarca").value,
+      Detalhes: document.getElementById("muDetalhes").value,
+      Foto: document.getElementById("muFoto").value,
+    };
+    fetch("http://localhost:4242/api/carros/update", {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(dados),
+    })
+      .then((response) => {
+        // Verifica se a resposta foi bem sucedida
+        if (!response.ok) {
+          throw new Error("Erro ao obter os dados");
+        }
+        // Converte a resposta para JSON
+        return response.json();
+      })
+      .then((data) => {
+        // Faz algo com os dados
+        //console.log(data);
+        resposta = "O carro com a marca: " + dados.Marca + " foi atualizado com sucesso!";
+        alert(resposta);
+        listarCarros();
+      })
+      .catch((error) => {
+        // Captura qualquer erro de rede ou tratamento de erro
+        console.error("Houve um erro:", error);
+      });
+  };
+
+</script>
+
 </body>
 </html>
