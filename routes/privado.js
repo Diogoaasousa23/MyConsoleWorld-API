@@ -4,7 +4,7 @@ const router = express.Router();
 
 // Rota para /privado/gerirSony
 router.get('/gerirSony', (req, res) => {
-  res.sendFile(path.join(__dirname, '..', 'templates', 'backOffice', 'tabelaCarros.html'));
+  res.sendFile(path.join(__dirname, '..', 'templates', 'backOffice', 'tabelaSony.html'));
 });
 
 // Rota para /privado/Dashboard
