@@ -73,7 +73,7 @@
           isAdmin: false,
         };
         console.log(dados);
-        fetch("http://localhost:4242/templates/frontEnd/Sign.html", {
+        fetch("http://localhost:4242/signup.html", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(dados),
@@ -98,7 +98,7 @@
     </script>
     <script>
       function validaPassword() {
-        var password1 = document.getElementById("pswd").value;
+        var password1 = document.getElementById("password").value;
 
         // Validate through RegularExpression
         var passwordcheck1 =
@@ -106,10 +106,6 @@
 
         if (!passwordcheck1.test(password1)) {
           alert("Password inválida");
-          return false;
-        }
-        if (!password1.match(password2)) {
-          alert("A password e a confirmação não são iguais");
           return false;
         }
         novoUser();
