@@ -13,7 +13,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
-//app.use('/', publicoRouter);
+app.use('/', publicoRouter);
 app.use('/bo/', privadoRouter);
 app.use('/api/local/', routerLocal);
 app.use('/api/pgs/', routerPgs);

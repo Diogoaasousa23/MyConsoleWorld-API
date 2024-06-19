@@ -1,0 +1,115 @@
+body {background-color: white}
+h1 {color: black;}
+
+.bg-image {
+    opacity: 0.4;
+    z-index: -1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.btn-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.imagem-center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.game-col {
+    width: 40%;
+    min-width: 10%;
+    max-width: 40%;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.game2-col {
+    max-width: 40%;
+    vertical-align: middle;
+    justify-content: center;
+}
+
+.Game2-col {
+    max-width: 40%;
+    vertical-align: middle;
+    justify-content: center;
+}
+
+.date-col {
+    width: 10%;
+    min-width: 10%;
+    vertical-align: middle;
+    text-align: center;
+    align-items: center;
+}
+
+.state-col {
+    width: 10%;
+    min-width: 10%;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.state2-col {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.actions-col {
+    width: 10%;
+    min-width: 10%;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.rating-col {
+    width: 7%;
+    min-width: 7%;
+    max-width: 7%;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.console-col {
+    width: 15%;
+    min-width: 15%;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.footer {
+    text-align: center;
+    padding: 5px;
+    background: rgb(0, 0, 0);
+    color: white;
+    font-weight: 500;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.2rem;
+}

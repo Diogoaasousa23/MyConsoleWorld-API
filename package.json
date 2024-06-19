@@ -19,16 +19,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Diogoaasousa23/AW-P-26118.git"
+    "url": "git+https://github.com/Diogoaasousa23/MyConsoleWorld-API.git"
   },
   "keywords": [
     "ws",
     "primeiro"
   ],
-  "author": "Diogo",
+  "author": "GrupoPW",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Diogoaasousa23/AW-P-26118/issues"
+    "url": "https://github.com/Diogoaasousa23/MyConsoleWorld-API/issues"
   },
-  "homepage": "https://github.com/Diogoaasousa23/AW-P-26118#readme"
+  "homepage": "https://github.com/Diogoaasousa23/MyConsoleWorld-API#readme"
 }

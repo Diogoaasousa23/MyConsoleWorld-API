@@ -1,0 +1,67 @@
+.logoimg {
+    max-width: 120px;
+    max-height: 130px;
+  }
+  .profileimg {
+    max-width: 150px;
+    max-height: 150px;
+  }
+  .little-box {
+    border: 2px solid black;
+    border-radius: 10px;
+  }
+  .profile-buttons {
+    display: inline-block;
+    padding: 10px 20px;
+    width: 150px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .bg-custom-color1 {
+    background-color: rgb(27, 29, 76);
+  }
+  .navbar-toggler1 {
+    padding: var(--bs-navbar-toggler-padding-y) var(--bs-navbar-toggler-padding-x);
+    font-size: var(--bs-navbar-toggler-font-size);
+    line-height: 1;
+    color: var(--bs-navbar-color);
+    background-color: white;
+    border: var(--bs-border-width) solid var(--bs-navbar-toggler-border-color);
+    border-radius: var(--bs-navbar-toggler-border-radius);
+    transition: var(--bs-navbar-toggler-transition);
+  }
+  
+  .footer {
+    text-align: center;
+    padding: 5px;
+    background: rgb(0, 0, 0);
+    color: white;
+    font-weight: 500;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.2rem;
+}
+  
+  .card-img {
+    height: 100px;
+  }
+  .card-buttons {
+    display: inline-block;
+    padding: 10px 20px;
+    width: 300px;
+    background-color: grey;
+    color: #fff;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }

@@ -1,0 +1,98 @@
+.cabecalho {
+  position: absolute;
+  top: 20px; 
+  left: 20px;  
+}
+.login {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.box {
+  height: 550px;
+  width: 600px;
+  margin: 0 auto;
+  border: 1px solid black;
+  padding: 20px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 10px 10px 0px #1B1D4C;
+}
+input[type="email"], input[type="password"], input[type="text"] {
+  font-size: 15px;
+  padding: 10px;
+  width: 100%;
+  border: 1px solid #000000;
+  box-sizing: border-box;
+  flex: 2;
+}
+.borda1 {
+  background-color: #ffffff;
+  border: 1px solid #000000;
+  padding: 5px 20px;
+  box-shadow: 5px 5px 0px #1B1D4C;
+  text-decoration: none;
+  color: black;
+}
+.lp {
+  padding: 10px 20px;
+  display: flex;
+  gap: 10px;
+  width: 400px;
+  margin-left: 213px;
+
+}
+.email, .pass {
+  display: flex;
+  align-items: flex-end;
+  gap: 5px;
+  margin: 10px 110px;
+}
+.rodape {
+  position: absolute;
+  bottom: 5px;
+  left: 5px;
+}
+label {
+  justify-content: flex-end;
+  display: flex;
+  flex: 1;
+}
+.blue1 {
+  color: blue;
+  text-decoration: underline;
+  display: flex;
+  align-items: center;
+}
+h1 {
+  font-weight: normal;
+}
+.btn-primary {
+  background-color: #1B1D4C;
+  border-color: #1B1D4C; 
+}
+.btn-primary:hover {
+  background-color: #1B1D4C;
+  border-color: #1B1D4C; 
+}
+.img-fluid {
+  padding: 15px;
+  max-width: 199px;
+  height: auto;
+  margin-left: 180px;
+}
+.form-control {
+  display: block;
+  width: 100%;
+  height: calc(1.5em + .75rem + 2px);
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #d9d9d9;
+  background-clip: padding-box;
+  border: 1px solid #000000;
+  border-radius: .25rem;
+  transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
