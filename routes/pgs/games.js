@@ -1,7 +1,10 @@
-const carrosRouter = require('express').Router();
-const controller = require('../../controllers/pgs/games');
+const express = require('express');
+const router = express.Router();
+const gameController = require('../../controllers/pgs/games');
 
+router.get('/', gameController.getAll);
+router.get('/:id', gameController.getById);
+router.post('/create', gameController.create);
+router.delete('/delete/:id', gameController.delete);
 
-carrosRouter.get('/testeConn', controller.testConnection); //le todos
-
-module.exports = carrosRouter;
+module.exports = router;

@@ -13,21 +13,21 @@ exports.testConnection = async (req, res) => {
   }
 }
 
-// Devolve todos os jogos
+// Devolve todos os estados
 exports.getAll = async (req, res) => {
   try {
-    const response = await prisma.games.findMany();
+    const response = await prisma.states.findMany();
     res.status(200).json(response);
   } catch (error) {
     res.status(500).json({ msg: error.message });
   }
 }
 
-// Devolve um jogo pelo ID
+// Devolve um estado pelo ID
 exports.getById = async (req, res) => {
   const id = Number(req.params.id);
   try {
-    const response = await prisma.games.findUnique({
+    const response = await prisma.states.findUnique({
       where: {
         id: id,
       },
@@ -38,58 +38,50 @@ exports.getById = async (req, res) => {
   }
 }
 
-// Cria um novo jogo
+// Cria um novo estado
 exports.create = async (req, res) => {
-  const { name, date, console, state, rating } = req.body;
+  const { name } = req.body;
   try {
-    const game = await prisma.games.create({
+    const state = await prisma.states.create({
       data: {
         name: name,
-        date: new Date(date),
-        console: console,
-        state: state,
-        rating: rating,
       },
     });
-    res.status(201).json(game);
+    res.status(201).json(state);
   } catch (error) {
     res.status(400).json({ msg: error.message });
   }
 }
 
-// Atualiza um jogo
+// Atualiza um estado
 exports.update = async (req, res) => {
-  const gameId = Number(req.params.id);
-  const { name, date, console, state, rating } = req.body;
+  const stateId = Number(req.params.id);
+  const { name } = req.body;
   try {
-    const updatedGame = await prisma.games.update({
+    const updatedState = await prisma.states.update({
       where: {
-        id: gameId,
+        id: stateId,
       },
       data: {
         name: name,
-        date: new Date(date),
-        console: console,
-        state: state,
-        rating: rating,
       },
     });
-    res.status(200).json(updatedGame);
+    res.status(200).json(updatedState);
   } catch (error) {
     res.status(400).json({ msg: error.message });
   }
 }
 
-// Apaga um jogo pelo ID
+// Apaga um estado pelo ID
 exports.delete = async (req, res) => {
   const id = Number(req.params.id);
   try {
-    await prisma.games.delete({
+    await prisma.states.delete({
       where: {
         id: id,
       },
     });
-    res.status(200).send("Game deleted successfully.");
+    res.status(200).send("State deleted successfully.");
   } catch (error) {
     res.status(400).json({ msg: error.message });
   }

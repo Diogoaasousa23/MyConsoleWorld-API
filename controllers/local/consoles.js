@@ -1,79 +1,81 @@
 const fs = require('fs');
 const path = require('path');
 
-const dataPath = path.join(__dirname, '../../data/local/games.json');
+const dataPath = path.join(__dirname, '../../data/local/consoles.json');
 
-// Devolve todos os jogos
+// Devolve todos os consoles
 exports.getAll = (req, res) => {
   try {
     const data = JSON.parse(fs.readFileSync(dataPath, 'utf-8'));
-    res.status(200).json(data.games);
+    res.status(200).json(data.consoles);
   } catch (error) {
     res.status(500).json({ msg: error.message });
   }
 }
 
-// Devolve um jogo pelo ID
+// Devolve um console pelo ID
 exports.getById = (req, res) => {
   const id = req.params.id;
   try {
     const data = JSON.parse(fs.readFileSync(dataPath, 'utf-8'));
-    const game = data.games.find(game => game.id === id);
-    if (!game) {
-      res.status(404).json({ msg: 'Jogo não encontrado' });
+    const console = data.consoles.find(console => console.id === id);
+    if (!console) {
+      res.status(404).json({ msg: 'Console não encontrado' });
       return;
     }
-    res.status(200).json(game);
+    res.status(200).json(console);
   } catch (error) {
     res.status(500).json({ msg: error.message });
   }
 }
 
-// Cria um novo jogo
+// Cria um novo console
 exports.create = (req, res) => {
-  const newGame = req.body;
+  const newConsole = req.body;
   try {
     const data = JSON.parse(fs.readFileSync(dataPath, 'utf-8'));
-    data.games.push(newGame);
+    data.consoles.push(newConsole);
     fs.writeFileSync(dataPath, JSON.stringify(data, null, 2));
-    res.status(201).json(newGame);
+    res.status(201).json(newConsole);
   } catch (error) {
     res.status(400).json({ msg: error.message });
   }
 }
 
-// Atualiza um jogo
+// Atualiza um console
 exports.update = (req, res) => {
-  const updatedGame = req.body;
+  const updatedConsole = req.body;
   try {
     const data = JSON.parse(fs.readFileSync(dataPath, 'utf-8'));
-    const index = data.games.findIndex(game => game.id === updatedGame.id);
+    const index = data.consoles.findIndex(console => console.id === updatedConsole.id);
     if (index === -1) {
-      res.status(404).json({ msg: 'Jogo não encontrado' });
+      res.status(404).json({ msg: 'Console não encontrado' });
       return;
     }
-    data.games[index] = updatedGame;
+    data.consoles[index] = updatedConsole;
     fs.writeFileSync(dataPath, JSON.stringify(data, null, 2));
-    res.status(200).json(updatedGame);
+    res.status(200).json(updatedConsole);
   } catch (error) {
     res.status(400).json({ msg: error.message });
   }
 }
 
-// Apaga um jogo pelo ID
+// Apaga um console pelo ID
 exports.delete = (req, res) => {
   const id = req.params.id;
   try {
     let data = JSON.parse(fs.readFileSync(dataPath, 'utf-8'));
-    const index = data.games.findIndex(game => game.id === id);
+    const index = data.consoles.findIndex(console => console.id === id);
     if (index === -1) {
-      res.status(404).json({ msg: 'Jogo não encontrado' });
+      res.status(404).json({ msg: 'Console não encontrado' });
       return;
     }
-    const deletedGame = data.games.splice(index, 1)[0];
+    const deletedConsole = data.consoles.splice(index, 1)[0];
     fs.writeFileSync(dataPath, JSON.stringify(data, null, 2));
-    res.status(200).json(deletedGame);
+    res.status(200).json(deletedConsole);
   } catch (error) {
     res.status(400).json({ msg: error.message });
   }
 }
+
+module.exports = exports;

@@ -14,18 +14,40 @@ datasource db {
 }
 
 model Games {
-  id       Int     @id @default(autoincrement())
-  name     String
-  date     DateTime
-  console  String
-  state    String
-  rating   Int
+  id          Int       @id @default(autoincrement())
+  name        String
+  date        DateTime
+  console     Consoles? @relation(fields: [consoleId], references: [id])
+  state       States?   @relation(fields: [stateId], references: [id])
+  rating      Int
+  companyId   Int?      @map("company_id")
+  company     Companies? @relation(fields: [companyId], references: [id])
+  consoleId   Int?
+  stateId     Int?
 }
 
 model Users {
-  id       Int     @id @default(autoincrement())
-  name     String  @db.VarChar(255)
-  email    String  @unique
-  password String
-  isAdmin  Boolean @default(false)
+  id        Int      @id @default(autoincrement())
+  name      String   @db.VarChar(255)
+  email     String   @unique
+  password  String
+  isAdmin   Boolean  @default(false)
+}
+
+model States {
+  id        Int      @id @default(autoincrement())
+  name      String
+  games     Games[]
+}
+
+model Consoles {
+  id        Int      @id @default(autoincrement())
+  name      String
+  games     Games[]
+}
+
+model Companies {
+  id        Int      @id @default(autoincrement())
+  name      String
+  games     Games[]
 }

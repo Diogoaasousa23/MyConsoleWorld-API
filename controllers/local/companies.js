@@ -1,79 +1,81 @@
 const fs = require('fs');
 const path = require('path');
 
-const dataPath = path.join(__dirname, '../../data/local/games.json');
+const dataPath = path.join(__dirname, '../../data/local/companies.json');
 
-// Devolve todos os jogos
+// Devolve todas as empresas
 exports.getAll = (req, res) => {
   try {
     const data = JSON.parse(fs.readFileSync(dataPath, 'utf-8'));
-    res.status(200).json(data.games);
+    res.status(200).json(data.companies);
   } catch (error) {
     res.status(500).json({ msg: error.message });
   }
 }
 
-// Devolve um jogo pelo ID
+// Devolve uma empresa pelo ID
 exports.getById = (req, res) => {
   const id = req.params.id;
   try {
     const data = JSON.parse(fs.readFileSync(dataPath, 'utf-8'));
-    const game = data.games.find(game => game.id === id);
-    if (!game) {
-      res.status(404).json({ msg: 'Jogo não encontrado' });
+    const company = data.companies.find(company => company.id === id);
+    if (!company) {
+      res.status(404).json({ msg: 'Empresa não encontrada' });
       return;
     }
-    res.status(200).json(game);
+    res.status(200).json(company);
   } catch (error) {
     res.status(500).json({ msg: error.message });
   }
 }
 
-// Cria um novo jogo
+// Cria uma nova empresa
 exports.create = (req, res) => {
-  const newGame = req.body;
+  const newCompany = req.body;
   try {
     const data = JSON.parse(fs.readFileSync(dataPath, 'utf-8'));
-    data.games.push(newGame);
+    data.companies.push(newCompany);
     fs.writeFileSync(dataPath, JSON.stringify(data, null, 2));
-    res.status(201).json(newGame);
+    res.status(201).json(newCompany);
   } catch (error) {
     res.status(400).json({ msg: error.message });
   }
 }
 
-// Atualiza um jogo
+// Atualiza uma empresa
 exports.update = (req, res) => {
-  const updatedGame = req.body;
+  const updatedCompany = req.body;
   try {
     const data = JSON.parse(fs.readFileSync(dataPath, 'utf-8'));
-    const index = data.games.findIndex(game => game.id === updatedGame.id);
+    const index = data.companies.findIndex(company => company.id === updatedCompany.id);
     if (index === -1) {
-      res.status(404).json({ msg: 'Jogo não encontrado' });
+      res.status(404).json({ msg: 'Empresa não encontrada' });
       return;
     }
-    data.games[index] = updatedGame;
+    data.companies[index] = updatedCompany;
     fs.writeFileSync(dataPath, JSON.stringify(data, null, 2));
-    res.status(200).json(updatedGame);
+    res.status(200).json(updatedCompany);
   } catch (error) {
     res.status(400).json({ msg: error.message });
   }
 }
 
-// Apaga um jogo pelo ID
+// Apaga uma empresa pelo ID
 exports.delete = (req, res) => {
   const id = req.params.id;
   try {
     let data = JSON.parse(fs.readFileSync(dataPath, 'utf-8'));
-    const index = data.games.findIndex(game => game.id === id);
+    const index = data.companies.findIndex(company => company.id === id);
     if (index === -1) {
-      res.status(404).json({ msg: 'Jogo não encontrado' });
+      res.status(404).json({ msg: 'Empresa não encontrada' });
       return;
     }
-    const deletedGame = data.games.splice(index, 1)[0];
+    const deletedCompany = data.companies.splice(index, 1)[0];
     fs.writeFileSync(dataPath, JSON.stringify(data, null, 2));
-    res.status(200).json(deletedGame);
+    res.status(200).json(deletedCompany);
   } catch (error) {
     res.status(400).json({ msg: error.message });
   }
 }
+
+module.exports = exports;
