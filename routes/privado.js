@@ -1,16 +1,15 @@
 const express = require('express');
 const path = require('path');
-const privadoRouter = express.Router();
+const router = express.Router();
 
-// Define uma rota para a página HTML
-privadoRouter.get('/gerirSony', (req, res) => {
-  // Envie o arquivo HTML como resposta para a solicitação HTTP
+// Rota para /privado/gerirSony
+router.get('/gerirSony', (req, res) => {
   res.sendFile(path.join(__dirname, '..', 'templates', 'backOffice', 'tabelaCarros.html'));
 });
 
-privadoRouter.get('/Dashboard', (req, res) => {
-  // Envie o arquivo HTML como resposta para a solicitação HTTP
+// Rota para /privado/Dashboard
+router.get('/Dashboard', (req, res) => {
   res.sendFile(path.join(__dirname, '..', 'templates', 'backOffice', 'Dashboard.html'));
 });
 
-module.exports = privadoRouter;
+module.exports = router;
