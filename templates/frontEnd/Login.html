@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../Styles/Login.css" rel="stylesheet">
+</head>
+<body class="d-flex align-items-center">
+
+  <div class="container">
+    <div class="cabecalho">
+      <a class="borda1" href="/index">&lt; Back</a>
+    </div>
+    <div class="row">
+      <div class="col-md-6 mx-auto login-container">
+        <img src="../Assets/Images/logo.png" alt="Logo" class="logo">
+        <h2>Login</h2>
+        <p class="signin-text">Sign in to your account</p>
+        <form>
+          <div class="form-group position-relative">
+            <input type="text" class="form-control" id="username" placeholder="Username" style="padding-left: 40px;">
+            <img src="../Assets/Images/user_icon.png" class="email-icon img-fluid" alt="Email">
+          </div>
+          <div class="form-group position-relative">
+            <input type="password" class="form-control" id="password" placeholder="Password" style="padding-left: 40px;">
+            <img src="../Assets/Images/cadeado.png" class="cadeado-icon img-fluid" alt="Senha">
+          </div>
+          <a href="/bo/dashboard" type="submit" class="btn btn-primary btn-block" style="margin-bottom: 20px;">Login</a>
+          <a href="/recoverpassword" class="blue">Forgot password?</a>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS and dependencies -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

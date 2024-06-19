@@ -52,13 +52,13 @@
                 <div class="row">
                   <div class="col-12 d-flex justify-content-center p-4">
                     <img
-                      src="Assets/Images/Profile_picture.png"
+                      src="../Assets/Images/Profile_picture.png"
                       alt="imagem"
                       class="img-fluid profileimg"
                     />
                   </div>
                   <div class="col-6 d-flex justify-content-end pb-3">
-                    <a href="Manage_profile.html" class="profile-buttons text-center"
+                    <a href="/bo/manageprofile" class="profile-buttons text-center"
                       >Edit Profile</a
                     >
                   </div>
@@ -150,7 +150,7 @@
             <p class="card-text">My Microsoft Games</p>
             <div class="row">
               <div class="col-6 d-flex justify-content-start text-center">
-                <a href="Microsoft.html" class="card-buttons">Go</a>
+                <a href="/bo/gerirMicrosoft" class="card-buttons">Go</a>
               </div>
               <div class="col-6 d-flex justify-content-end text-center">
                 <a href="https://www.xbox.com/pt-PT" class="card-buttons">See details</a>
@@ -159,13 +159,13 @@
           </div>
         </div>
         <div class="col mb-3 mb-sm-4">
-          <img src="Assets/Images/Nintendo-logo.png" class="card-img-top card-img" />
+          <img src="../Assets/Images/Nintendo-logo.png" class="card-img-top card-img" />
           <div class="card-body">
             <h5 class="card-title">Nintendo Consoles</h5>
             <p class="card-text">My Nintendo Games</p>
             <div class="row">
               <div class="col-6 d-flex justify-content-start text-center">
-                <a href="Nintendo.html" class="card-buttons">Go</a>
+                <a href="/bo/gerirNintendo" class="card-buttons">Go</a>
               </div>
               <div class="col-6 d-flex justify-content-end text-center">
                 <a href="https://www.nintendo.com/pt-pt/" class="card-buttons">See details</a>
@@ -174,13 +174,13 @@
           </div>
         </div>
         <div class="col mb-3 mb-sm-4">
-          <img src="Assets/Images/Steam-logo.png" class="card-img-top card-img" />
+          <img src="../Assets/Images/Steam-logo.png" class="card-img-top card-img" />
           <div class="card-body">
             <h5 class="card-title">Steam Consoles</h5>
             <p class="card-text">My Steam Games</p>
             <div class="row">
               <div class="col-6 d-flex justify-content-start text-center">
-                <a href="Steam.html" class="card-buttons">Go</a>
+                <a href="/bo/gerirSteam" class="card-buttons">Go</a>
               </div>
               <div class="col-6 d-flex justify-content-end text-center">
                 <a href="https://store.steampowered.com/" class="card-buttons">See details</a>
@@ -189,13 +189,13 @@
           </div>
         </div>
         <div class="col mb-3 mb-sm-0">
-            <img src="Assets/Images/PC_Gamer_logo_(2015-present).png" class="card-img-top card-img" />
+            <img src="../Assets/Images/PC_Gamer_logo_(2015-present).png" class="card-img-top card-img" />
             <div class="card-body">
               <h5 class="card-title">PC games</h5>
               <p class="card-text">My PC Games</p>
               <div class="row">
                 <div class="col-6 d-flex justify-content-start text-center">
-                  <a href="PCgames.html" class="card-buttons">Go</a>
+                  <a href="/bo/gerirPCGames" class="card-buttons">Go</a>
                 </div>
                 <div class="col-6 d-flex justify-content-end text-center">
                   <a href="https://www.g2a.com/" class="card-buttons">See details</a>
@@ -223,7 +223,7 @@
         })
         .catch((error) => console.error("Erro ao carregar dados:", error));
 
-      fetch('jogoPreferido.json')
+      fetch('../jogoPreferido.json')
         .then((response) => response.json())
         .then((data) => {
           const select = document.getElementById("mySelect2");
