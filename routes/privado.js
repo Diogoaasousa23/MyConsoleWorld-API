@@ -32,7 +32,7 @@ router.get('/Dashboard', (req, res) => {
   res.sendFile(path.join(__dirname, '..', 'templates', 'backOffice', 'Dashboard.html'));
 });
 
-// Rota para /privado/Dashboard
+// Rota para /privado/ManageProfile
 router.get('/manageprofile', (req, res) => {
   res.sendFile(path.join(__dirname, '..', 'templates', 'backOffice', 'Manage_profile.html'));
 });
