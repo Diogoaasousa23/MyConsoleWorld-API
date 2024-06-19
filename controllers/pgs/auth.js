@@ -4,7 +4,7 @@ const authenticateUtil = require("../../utils/authenticate");
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
-exports.login = async (req, res) => {
+exports.signin = async (req, res) => {
   try {
     const { email, password } = req.body;
     const user = await prisma.users.findUnique({
@@ -40,7 +40,7 @@ exports.signup = async (req, res) => {
         isAdmin: isAdmin,
       },
     });
-    return this.login(req, res);
+    return this.signin(req, res);
   } catch (error) {
     res.status(401).json({ msg: error.message });
   }

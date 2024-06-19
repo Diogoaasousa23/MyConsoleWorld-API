@@ -1,42 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login</title>
-  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-  <link href="../Styles/Login.css" rel="stylesheet">
-</head>
-<body class="d-flex align-items-center">
-
-  <div class="container">
-    <div class="cabecalho">
-      <a class="borda1" href="/index">&lt; Back</a>
-    </div>
-    <div class="row">
-      <div class="col-md-6 mx-auto login-container">
-        <img src="../Assets/Images/logo.png" alt="Logo" class="logo">
-        <h2>Login</h2>
-        <p class="signin-text">Sign in to your account</p>
-        <form>
-          <div class="form-group position-relative">
-            <input type="text" class="form-control" id="username" placeholder="Username" style="padding-left: 40px;">
-            <img src="../Assets/Images/user_icon.png" class="email-icon img-fluid" alt="Email">
-          </div>
-          <div class="form-group position-relative">
-            <input type="password" class="form-control" id="password" placeholder="Password" style="padding-left: 40px;">
-            <img src="../Assets/Images/cadeado.png" class="cadeado-icon img-fluid" alt="Senha">
-          </div>
-          <a href="/bo/dashboard" type="submit" class="btn btn-primary btn-block" style="margin-bottom: 20px;">Login</a>
-          <a href="/recoverpassword" class="blue">Forgot password?</a>
-        </form>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link href="../Styles/Login.css" rel="stylesheet" />
+  </head>
+  <body class="d-flex align-items-center">
+    <div class="container">
+      <div class="cabecalho">
+        <a class="borda1" href="/index">&lt; Back</a>
+      </div>
+      <div class="row">
+        <div class="col-md-6 mx-auto login-container">
+          <img src="../Assets/Images/logo.png" alt="Logo" class="logo" />
+          <h2>Login</h2>
+          <p class="signin-text">Sign in to your account</p>
+          <form>
+            <div class="form-group position-relative">
+              <input
+                type="text"
+                class="form-control"
+                id="username"
+                placeholder="Username"
+                style="padding-left: 40px"
+              />
+              <img
+                src="../Assets/Images/user_icon.png"
+                class="email-icon img-fluid"
+                alt="Email"
+              />
+            </div>
+            <div class="form-group position-relative">
+              <input
+                type="password"
+                class="form-control"
+                id="password"
+                placeholder="Password"
+                style="padding-left: 40px"
+              />
+              <img
+                src="../Assets/Images/cadeado.png"
+                class="cadeado-icon img-fluid"
+                alt="Senha"
+              />
+            </div>
+            <button
+              type="button"
+              class="btn btn-primary"
+              onclick="validaLogin()"
+            >
+              Login
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              onclick="leTokenSFF()"
+            >
+              Token
+            </button>
+            <br />
+            <a href="/recoverpassword" class="blue">Forgot password?</a>
+          </form>
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- Bootstrap JS and dependencies -->
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script type="text/JavaScript">
+  // Função para validar o login
+const validaLogin = async () => {
+  // Simulando um login sem fazer a requisição ao backend
+  const dados = {
+    email: "", // Simulando email vazio
+    password: "", // Simulando senha vazia
+  };
+
+  try {
+    // Simulando sucesso na requisição
+    const response = { ok: true };
+
+    if (!response.ok) {
+      alert("Erro ao fazer login");
+    } else {
+      alert("Login efetuado com sucesso");
+      // Simulação: armazenar token (se necessário)
+      const token = "token_simulado";
+      localStorage.setItem("token", token);
+      // Redirecionamento para o dashboard
+      window.location.href = "/bo/dashboard";
+    }
+  } catch (error) {
+    console.error("Erro ao tentar fazer login:", error);
+    alert("Erro ao tentar fazer login");
+  }
+};
+
+    </script>
+    <script>
+      const leTokenSFF = async () => {
+        var dados = {
+          token: localStorage.getItem("token"),
+        };
+        console.log(JSON.stringify(dados));
+        const response = await fetch(
+          "http://localhost:4242/controllers/pgs/auth/letoken",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(dados),
+          }
+        );
+        console.log(response);
+        dados = await response.json();
+        console.log(dados);
+        if (!response.ok) {
+          alert("Erro ao fazer login");
+        } else {
+          alert("token lido com sucesso");
+          console.log(dados);
+        }
+      };
+    </script>
+  </body>
 </html>
